@@ -31,7 +31,7 @@ const PhotoGridItem = ({ id, src, alt, tags }) => {
             }
           />
 
-          <Image src={src} />
+          <Image src={src} alt={alt} />
         </picture>
       </Anchor>
       <Tags>
@@ -60,17 +60,22 @@ const Image = styled.img`
 `;
 
 const Tags = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const Tag = styled.li`
+  display: inline;
   padding: 4px 8px;
   background: var(--color-gray-300);
   font-size: 0.875rem;
   font-weight: 475;
   color: var(--color-gray-800);
+  &:not(:first-child) {
+    margin-left: 8px;
+  }
 `;
 
 export default PhotoGridItem;
